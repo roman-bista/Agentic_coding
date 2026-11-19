@@ -22,6 +22,11 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
@@ -52,4 +57,6 @@ def delete_expense(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    # Port 5000 is shared with the macOS AirPlay Receiver, which binds *:5000
+    # but not the IPv4 loopback — binding 127.0.0.1 lets both coexist.
+    app.run(debug=True, host="127.0.0.1", port=5000)
